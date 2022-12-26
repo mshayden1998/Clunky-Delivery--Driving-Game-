@@ -23,6 +23,16 @@ position = Vector2( 0, -51 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
+[node name="BWJumpError" type="RayCast2D" parent="."]
+position = Vector2( -97, 0 )
+enabled = true
+cast_to = Vector2( 0, 30 )
+
+[node name="FWJumpError" type="RayCast2D" parent="."]
+position = Vector2( 109, 0 )
+enabled = true
+cast_to = Vector2( 0, 30 )
+
 [node name="BackWheel" type="RigidBody2D" parent="."]
 position = Vector2( -97, 0 )
 mass = 2.04082
@@ -40,10 +50,6 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 softness = 1.0
 
-[node name="BWJumpError" type="RayCast2D" parent="BackWheel"]
-enabled = true
-cast_to = Vector2( 0, 30 )
-
 [node name="FrontWheel" type="RigidBody2D" parent="."]
 position = Vector2( 109, 0 )
 mass = 2.04082
@@ -60,10 +66,6 @@ texture = ExtResource( 1 )
 node_a = NodePath("../..")
 node_b = NodePath("..")
 softness = 1.0
-
-[node name="FWJumpError" type="RayCast2D" parent="FrontWheel"]
-enabled = true
-cast_to = Vector2( 0, 30 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
