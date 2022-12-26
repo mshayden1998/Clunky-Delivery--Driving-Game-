@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://elements/Vehicle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/simple_test_texture_32x32.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Floor.gd" type="Script" id=3]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="Floor" type="Polygon2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -18, 371, 198, 515, 288, 501, 300, 551, 448, 584, 976, 593, 1289, 402, 1501, 462, 1630, 420, 1913, 441, 2048, 110, 2122, 754, -138, 754, -94, 53 )
+script = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="Vehicle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 610, 476 )
