@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="InGame" type="CanvasLayer"]
+
+[node name="CargoInfo" type="ProgressBar" parent="."]
+margin_right = 4.0
+margin_bottom = 14.0
+value = 50.0

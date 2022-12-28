@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/topdowntanks/PNG/Environment/dirt.png" type="Texture" id=1]
+[ext_resource path="res://elements/Vehicle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Floor.gd" type="Script" id=3]
+[ext_resource path="res://elements/LargeBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://elements/SmallBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://elements/PostOffice.tscn" type="PackedScene" id=6]
+[ext_resource path="res://elements/House.tscn" type="PackedScene" id=7]
+
+[node name="Level1" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.807843, 0.87451, 0.886275, 1 )
+
+[node name="Ground" type="Polygon2D" parent="."]
+texture = ExtResource( 1 )
+texture_scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -256, 672, 1536, 672, 2560, 512, 3072, 512, 3584, 768, 4608, 768, 4992, 832, 5376, 768, 5888, 864, 7168, 864, 7424, 0, 7424, 1280, -256, 1280 )
+script = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+
+[node name="Vehicle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 448 )
+mass = 13.0
+
+[node name="LargeBox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 584, 385 )
+
+[node name="SmallBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 635, 355 )
+
+[node name="SmallBox2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 636, 395 )
+
+[node name="PostOffice" parent="." instance=ExtResource( 6 )]
+position = Vector2( 152, 523 )
+
+[node name="House" parent="." instance=ExtResource( 7 )]
+position = Vector2( 7015, 731 )

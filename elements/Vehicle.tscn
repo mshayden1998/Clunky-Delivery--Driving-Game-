@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/wheels.svg" type="Texture" id=1]
 [ext_resource path="res://assets/chassis.svg" type="Texture" id=2]
 [ext_resource path="res://elements/Vehicle.gd" type="Script" id=3]
-[ext_resource path="res://elements/SmallBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://elements/LargeBox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.0
@@ -17,8 +15,16 @@ extents = Vector2( 74, 32 )
 
 [node name="Vehicle" type="RigidBody2D"]
 mass = 10.2041
-gravity_scale = 3.0
 script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+offset_h = 0.65
+offset_v = -1.0
+drag_margin_left = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="ChassisColl" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -141, -6, 140, -6, 136, -40, 104, -56, 80, -96, 18, -96, 18, -32, -130, -32, -130, -93, -141, -93 )
@@ -40,7 +46,7 @@ cast_to = Vector2( 0, 30 )
 
 [node name="BackWheel" type="RigidBody2D" parent="."]
 position = Vector2( -97, 0 )
-mass = 2.04082
+mass = 5.0
 gravity_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackWheel"]
@@ -53,11 +59,11 @@ texture = ExtResource( 1 )
 [node name="BackWHolder" type="PinJoint2D" parent="BackWheel"]
 node_a = NodePath("../..")
 node_b = NodePath("..")
-softness = 1.0
+softness = 0.5
 
 [node name="FrontWheel" type="RigidBody2D" parent="."]
 position = Vector2( 109, 0 )
-mass = 2.04082
+mass = 5.0
 gravity_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWheel"]
@@ -70,19 +76,7 @@ texture = ExtResource( 1 )
 [node name="FrontWHolder" type="PinJoint2D" parent="FrontWheel"]
 node_a = NodePath("../..")
 node_b = NodePath("..")
-softness = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
-[node name="SmallBox" parent="." instance=ExtResource( 4 )]
-position = Vector2( -108, -52 )
-
-[node name="SmallBox2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -5, -52 )
-
-[node name="LargeBox" parent="." instance=ExtResource( 5 )]
-position = Vector2( -56, -62 )
+softness = 0.5
 
 [node name="BoxesDetect" type="Area2D" parent="."]
 position = Vector2( -58, -50 )
