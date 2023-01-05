@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/topdowntanks/PNG/Environment/dirt.png" type="Texture" id=1]
 [ext_resource path="res://elements/Vehicle.tscn" type="PackedScene" id=2]
@@ -7,13 +7,19 @@
 [ext_resource path="res://elements/SmallBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elements/PostOffice.tscn" type="PackedScene" id=6]
 [ext_resource path="res://elements/House.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/InGame.tscn" type="PackedScene" id=8]
 
 [node name="Level1" type="Node"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Interface" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="InGame" parent="Interface" instance=ExtResource( 8 )]
+
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.807843, 0.87451, 0.886275, 1 )
@@ -44,3 +50,5 @@ position = Vector2( 152, 523 )
 
 [node name="House" parent="." instance=ExtResource( 7 )]
 position = Vector2( 7015, 731 )
+
+[connection signal="fuel_updated" from="Vehicle" to="Interface/InGame" method="_on_Vehicle_fuel_updated"]
